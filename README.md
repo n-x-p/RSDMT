@@ -6,7 +6,8 @@ In topology, simplicial complexes can be reduced to smaller complexes of the sam
 
 ## Requirements
 Below are the software requirements
-  * Boost (that's it for now)
+  * Boost >= 1.58.0
+  * (that's it for now)
 ## Compile flags
   `-std=c++14`
 ## Inspiration
