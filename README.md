@@ -9,5 +9,5 @@ Below are the software requirements
   * Boost (that's it for now)
 ## Compile flags
   `-std=c++14`
-## Etc.
-[This](https://arxiv.org/pdf/1303.6422.pdf) paper is the inspiration for this project.
+## Inspiration
+[This](https://arxiv.org/pdf/1303.6422.pdf) paper, **Random Discrete Morse Theory and a New Library of Triangulations**, by Bruno Benedetti and Frank H. Lutz is the inspiration for this project.
