@@ -185,7 +185,7 @@ std::vector<int> faceVector(std::vector<std::vector<int>> table) {
         }
     }
     std::vector<int> fv (size,0);
-    for (int i = 1; i < table.size(); i++) {
+    for (int i = 0; i < table.size(); i++) {
         fv[table[i].size()-1]++;
     }
     return fv;
@@ -409,7 +409,7 @@ int  dim(std::vector<std::vector<int>> T) {
 
 // MAIN
 int main() {
-    std::string filename = "scTest";
+    std::string filename = "dunce_hat"; //"Barnette_sphere";
     std::string facets = fileRead("LoT/"+filename);
     std::vector<std::vector<int>> table = facetTable(facets);
     for (int i = 0;i < table.size();i++) {
@@ -430,11 +430,13 @@ int main() {
     std::cout<<table<<std::endl;
 
     //std::cout<<hasse<<std::endl;
-    std::cout<<"\ndomTable: "<<domTable(hasse,table)<<facetIndex(hasse)<<std::endl;
-    hasse = sCollapse(table,hasse,3);
-    std::cout<<"Strong collapse on vertex "<<table[3]<<std::endl;
+    std::cout<<"\ndomTable: "<<domTable(hasse,table)<<std::endl;
+    std::cout<<"\nFacet Index: "<<facetIndex(hasse)<<std::endl;
+    //hasse = sCollapse(table,hasse,3);
+    //std::cout<<"Strong collapse on vertex "<<table[3]<<std::endl;
     //std::cout<<hasse<<std::endl;
-    std::cout<<"\ndomTable: "<<domTable(hasse,table)<<facetIndex(hasse)<<std::endl;
+    //std::cout<<"\ndomTable: "<<domTable(hasse,table)<<facetIndex(hasse)<<std::endl;
+    std::cout<<"\nFacets: ["<<facetIndex(hasse).size()<<"] ";
     for (int i =0; i<facetIndex(hasse).size();i++){
         std::cout<<table[facetIndex(hasse)[i]];
     }
@@ -466,5 +468,6 @@ int main() {
         }
     }
      */
-    std::cout<<"Discrete Morse vector = "<<DMV<<std::endl;
+    //std::cout<<"\nDiscrete Morse vector = "<<DMV<<std::endl;
+    return 0;
 }
