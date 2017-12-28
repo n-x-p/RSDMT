@@ -1,0 +1,50 @@
+####################################################################################
+####################################################################################
+####################################################################################
+###                                                                              ###
+###                                                                              ###
+###  LIBRARY OF TRIANGULATIONS                                                   ###
+###  by Bruno Benedetti and Frank H. Lutz                                        ###
+###  http://page.math.tu-berlin.de/~lutz/stellar/library_of_triangulations.html  ###
+###                                                                              ###
+###  name of example:                                                            ###
+###                                                                              ###
+###    dunce_hat                                                                 ###
+###                                                                              ###
+###                                                                              ###
+###  description:                                                                ###
+###                                                                              ###
+###    vertex-minimal 8-vertex triangulation of the dunce hat                    ###
+###                                                                              ###
+###                                                                              ###
+###  properties:                                                                 ###
+###                                                                              ###
+###    f=(8,24,17),                                                              ###
+###    H_*=(Z,0,0),                                                              ###
+###    contractible, but not collapsible,                                        ###
+###    optimal discrete Morse vector: (1,1,1), not perfect                       ###
+###                                                                              ###
+###                                                                              ###
+###  references:                                                                 ###
+###                                                                              ###
+###    E. C. Zeeman.                                                             ###
+###    On the dunce hat.                                                         ###
+###    Topology 2, 341-358 (1963).                                               ###
+###                                                                              ###
+###    B. Benedetti and F. H. Lutz.                                              ###
+###    The dunce hat and a minimal non-extendably collapsible 3-ball.            ###
+###    Electronic Geometry Model No. 2013.10.001 (2013).                         ###
+###                                                                              ###
+###    B. Benedetti and F. H. Lutz.                                              ###
+###    Random discrete Morse theory and a new library of triangulations.         ###
+###    Exp. Math. 23, 66-94 (2014).                                              ###
+###                                                                              ###
+###                                                                              ###
+####################################################################################
+####################################################################################
+####################################################################################
+
+facets:=[ [ 1, 2, 4 ], [ 1, 2, 7 ], [ 1, 2, 8 ], [ 1, 3, 4 ], [ 1, 3, 5 ], 
+  [ 1, 3, 6 ], [ 1, 5, 6 ], [ 1, 7, 8 ], [ 2, 3, 5 ], [ 2, 3, 7 ], [ 2, 3, 8 ], 
+  [ 2, 4, 5 ], [ 3, 4, 8 ], [ 3, 6, 7 ], [ 4, 5, 6 ], [ 4, 6, 8 ], [ 6, 7, 8 ] ];
+
