@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1501094527 source:/home/niko/Dropbox/School/Revived_Research/RSDMT/main.cpp
+	<iostream>
+	<fstream>
+	<vector>
+	<algorithm>
+	<assert.h>
+	<boost/numeric/ublas/matrix_sparse.hpp>
+	<boost/numeric/ublas/io.hpp>
+
