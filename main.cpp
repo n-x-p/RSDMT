@@ -402,6 +402,16 @@ std::vector<std::vector<int>> domTable(sparse m, std::vector<std::vector<int>> T
     return L;
 }
 
+// returns readable table of dom vertices indices
+std::vector<std::vector<int>> domTableR(sparse m, std::vector<std::vector<int>> T) {
+    std::vector<std::vector<int>> L = domTable(m, T);
+    for (int i = 0; i < L.size(); i++) {
+        L[i][0] = T[L[i][0]][0];
+        L[i][1] = T[L[i][1]][0];
+    }
+    return L;
+}
+
 // returns dimension of simplex
 int  dim(std::vector<std::vector<int>> T) {
     int top = T[T.size()-1].size() - 1;
@@ -409,7 +419,7 @@ int  dim(std::vector<std::vector<int>> T) {
 
 // MAIN
 int main() {
-    std::string filename = "dunce_hat"; //"Barnette_sphere";
+    std::string filename = "scTest"; //"Barnette_sphere";
     std::string facets = fileRead("LoT/"+filename);
     std::vector<std::vector<int>> table = facetTable(facets);
     for (int i = 0;i < table.size();i++) {
@@ -430,7 +440,7 @@ int main() {
     std::cout<<table<<std::endl;
 
     //std::cout<<hasse<<std::endl;
-    std::cout<<"\ndomTable: "<<domTable(hasse,table)<<std::endl;
+    std::cout<<"\ndomTable: "<<domTableR(hasse,table)<<std::endl;
     std::cout<<"\nFacet Index: "<<facetIndex(hasse)<<std::endl;
     //hasse = sCollapse(table,hasse,3);
     //std::cout<<"Strong collapse on vertex "<<table[3]<<std::endl;
