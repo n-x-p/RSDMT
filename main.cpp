@@ -30,6 +30,19 @@ std::ostream& operator << (std::ostream& os, const std::vector<T>& v){
     return os;
 }
 
+// inserts line breaks in printing sparse
+void prettySparse(sparse S) {
+    for (int i = 0; i < S.size1(); i++) {
+        std::cout<<"(";
+        for (int j = 0; j < S.size2(); j++) {
+            std::cout<<S(i,j);
+            if (j != S.size2()-1) {
+                std::cout<<",";
+            }
+        }
+        std::cout<<")"<<std::endl;
+    }
+}
 // Reads input file to string
 std::string fileRead(std::string filename) {
     // Reads input file to string to later be processed
@@ -179,13 +192,13 @@ bool isFace(std::vector<int> sigma, std::vector<int> tau) {
 // Gives face vector of given complex/table
 std::vector<int> faceVector(std::vector<std::vector<int>> table) {
     int size = 0;
-    for (int i = 0; i < table.size(); i++) {
+    for (int i = 1; i < table.size(); i++) {
         if (table[i].size() > size) {
             size = table[i].size();
         }
     }
     std::vector<int> fv (size,0);
-    for (int i = 0; i < table.size(); i++) {
+    for (int i = 1; i < table.size(); i++) {
         fv[table[i].size()-1]++;
     }
     return fv;
@@ -219,6 +232,9 @@ sparse genHasse(std::vector<std::vector<int>> table) {
                 m(i,j) = true;
             }
         }
+    }
+    for (int i = 1; i < m.size1(); i++) {
+        m(0,i) = (table[i].size() == 1);
     }
     return m;
 }
@@ -323,10 +339,7 @@ bool xDOMy(std::vector<std::vector<int>> T, sparse m, int x, int y) {
             }
         }
     }
-    if (xArr.size()==yArr.size()) {
-        return false;
-    }
-    return isFace(xArr,yArr);
+    return isFace(xArr,yArr)||vEqual(xArr,yArr);
 }
 
 // performs strong collapse
@@ -427,6 +440,7 @@ int main() {
     std::string facets = fileRead("LoT/"+filename);
     std::vector<std::vector<int>> FT = facetTable(facets);
     std::vector<std::vector<int>> table = FT;
+    table.insert(table.begin(),{NULL});
     for (int i = 0;i < FT.size();i++) {
         std::cout<<"Generating powerset of "<<FT[i]<<std::endl;
         table = fuse(table,powerSet(FT[i]));
@@ -446,17 +460,26 @@ int main() {
     std::vector<std::vector<int>> ft;
     std::cout<<table<<std::endl;
 
-    //std::cout<<hasse<<std::endl;
+    //Debug print info
     std::cout<<"\ndomTable: "<<domTableR(hasse,table)<<std::endl;
-    std::cout<<"\nFacet Index: "<<facetIndex(hasse)<<std::endl;
-    //hasse = sCollapse(table,hasse,3);
-    //std::cout<<"Strong collapse on vertex "<<table[3]<<std::endl;
-    //std::cout<<hasse<<std::endl;
-    //std::cout<<"\ndomTable: "<<domTable(hasse,table)<<facetIndex(hasse)<<std::endl;
     std::cout<<"\nFacets: ["<<facetIndex(hasse).size()<<"] ";
     for (int i =0; i<facetIndex(hasse).size();i++){
         std::cout<<table[facetIndex(hasse)[i]];
     }
+    std::cout<<std::endl;
+    prettySparse(hasse);
+
+    hasse = sCollapse(table,hasse,6);
+    std::cout<<"Strong collapse on vertex "<<table[6]<<std::endl;
+
+    //debug print info
+    std::cout<<"\ndomTable: "<<domTableR(hasse,table)<<std::endl;
+    std::cout<<"\nFacets: ["<<facetIndex(hasse).size()<<"] ";
+    for (int i =0; i<facetIndex(hasse).size();i++){
+        std::cout<<table[facetIndex(hasse)[i]];
+    }
+    std::cout<<std::endl;
+    prettySparse(hasse);
     //Actual algorithm
     // Which is broken
     /*
