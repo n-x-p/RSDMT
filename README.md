@@ -10,6 +10,6 @@ Below are the software requirements
 ## Compile flags
   `-std=c++14`
 ## Possibly Confusing Stuff
-The simplicial complex is stored in a boolean [sparse matrix](http://www.boost.org/doc/libs/1_45_0/libs/numeric/ublas/doc/matrix_sparse.htm) that represents a the [adjacency matrix](https://en.wikipedia.org/wiki/Adjacency_matrix) of a [Hasse diagram](https://en.wikipedia.org/wiki/Hasse_diagram) to make the program lighter on system memory. We can make this matrix boolean because there are noredundant edges in a graph representing the Hasse diagram of a simplicial complex.
+The simplicial complex is stored in a boolean [sparse matrix](http://www.boost.org/doc/libs/1_45_0/libs/numeric/ublas/doc/matrix_sparse.htm) that represents a the [adjacency matrix](https://en.wikipedia.org/wiki/Adjacency_matrix) of a [Hasse diagram](https://en.wikipedia.org/wiki/Hasse_diagram) to make the program lighter on system memory. We can make this matrix boolean because there are no redundant edges in a graph representing the Hasse diagram of a simplicial complex.
 ## Inspiration
 [This](https://arxiv.org/pdf/1303.6422.pdf) paper, **Random Discrete Morse Theory and a New Library of Triangulations**, by Bruno Benedetti and Frank H. Lutz is the inspiration for this project.
