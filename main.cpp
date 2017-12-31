@@ -323,7 +323,10 @@ bool xDOMy(std::vector<std::vector<int>> T, sparse m, int x, int y) {
             }
         }
     }
-    return isFace(xArr,yArr)||vEqual(xArr,yArr);
+    if (xArr.size()==yArr.size()) {
+        return false;
+    }
+    return isFace(xArr,yArr);
 }
 
 // performs strong collapse
@@ -415,15 +418,18 @@ std::vector<std::vector<int>> domTableR(sparse m, std::vector<std::vector<int>> 
 // returns dimension of simplex
 int  dim(std::vector<std::vector<int>> T) {
     int top = T[T.size()-1].size() - 1;
+    return top;
 }
 
 // MAIN
 int main() {
     std::string filename = "scTest"; //"Barnette_sphere";
     std::string facets = fileRead("LoT/"+filename);
-    std::vector<std::vector<int>> table = facetTable(facets);
-    for (int i = 0;i < table.size();i++) {
-        table = fuse(table,powerSet(table[i]));
+    std::vector<std::vector<int>> FT = facetTable(facets);
+    std::vector<std::vector<int>> table = FT;
+    for (int i = 0;i < FT.size();i++) {
+        std::cout<<"Generating powerset of "<<FT[i]<<std::endl;
+        table = fuse(table,powerSet(FT[i]));
     }
     table = redundancyCheck(table);
     //printTable("Full Complex", table);
@@ -432,6 +438,7 @@ int main() {
              << faceVector(table) << std::endl;
     sparse hasse = genHasse(table);
     int dimension = dim(table);
+    std::cout<<"Complex Dimension: "<<dimension<<std::endl;
     std::vector<int> DMV(dim(table) + 1, 0);
     srand (time(NULL));
     int rnum;
