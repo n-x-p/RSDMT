@@ -10,5 +10,7 @@ Below are the software requirements
   * (that's it for now)
 ## Compile flags
   `-std=c++14`
+## Possibly Confusing Stuff
+The simplicial complex is stored in a boolean sparse matrix that represents a the adjacency matrix of a [Hasse diagram](https://en.wikipedia.org/wiki/Hasse_diagram) to make the program lighter on system memory.
 ## Inspiration
 [This](https://arxiv.org/pdf/1303.6422.pdf) paper, **Random Discrete Morse Theory and a New Library of Triangulations**, by Bruno Benedetti and Frank H. Lutz is the inspiration for this project.
