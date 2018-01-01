@@ -407,7 +407,7 @@ std::vector<std::vector<int>> domTable(sparse m, std::vector<std::vector<int>> T
     }
     for (int i = 0; i < vs.size(); i++) {
         for (int j = 0; j < vs.size(); j++) {
-            if (i == j) {
+            if (i == j || T[j][0] == 0) {
                 continue;
             }
             if (xDOMy(T, m, i, j)) {
