@@ -454,8 +454,6 @@ int main() {
     int dimension = dim(table);
     std::cout<<"Complex Dimension: "<<dimension<<std::endl;
     std::vector<int> DMV(dim(table) + 1, 0);
-    srand (time(NULL));
-    int rnum;
     std::vector<std::vector<int>> dt;
     std::vector<std::vector<int>> ft;
     std::cout<<table<<std::endl;
@@ -480,34 +478,5 @@ int main() {
     }
     std::cout<<std::endl;
     prettySparse(hasse);
-    //Actual algorithm
-    // Which is broken
-    /*
-    while (!isCollapsed(hasse)) {
-        dt = domTable(hasse, table);
-        ft = fpTable(table, hasse);
-        if (dt.size() > 0) {
-            rnum = rand() % dt.size();
-            hasse = sCollapse(table,hasse,dt[rnum][1]);
-            std::cout<<"Strong collapse on vertex "<<table[dt[rnum][1]]<<std::endl;
-        } else if (ft.size() > 0) {
-            rnum = rand() % ft.size();
-            hasse = eCollapse(hasse, ft[rnum][0], ft[rnum][1]);
-            //std::cout<<"Elementary collapse with free pair "<<table[ft[rnum][0]]<<
-            //
-            //         ", "<<table[ft[rnum][1]]<<std::endl;//<<ft<<std::endl;
-            DMV[table[ft[rnum][1].size() - 1] = 1 + DMV[table[ft[rnum][1]].size() - 1]
-        } else {
-            std::vector<int> fidx = facetIndex(hasse);
-            rnum = rand() % fidx.size();
-            for (int i = 0; i < hasse.size1(); i++) {
-                hasse(i, fidx[rnum]) = false;
-            }
-            DMV[table[fidx[rnum]].size() - 1] = 1 + DMV[table[fidx[rnum]].size() - 1];
-            std::cout<<"Removal of facet "<<table[fidx[rnum]]<<std::endl;
-        }
-    }
-     */
-    //std::cout<<"\nDiscrete Morse vector = "<<DMV<<std::endl;
     return 0;
 }
